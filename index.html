@@ -262,6 +262,289 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.codingtk.com/2018/12/05/Data-Binding入门/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="maoai_xianyu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/maoai_xianyu.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="maoai_xianyu'Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/05/Data-Binding入门/" itemprop="url">Data Binding入门</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-05T19:18:27+08:00">
+                2018-12-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Data-Binding"><a href="#Data-Binding" class="headerlink" title="Data Binding"></a>Data Binding</h2><p>讲解</p>
+<ol>
+<li>MVVM<br><img src="http://note.youdao.com/yws/res/23797/A1B734F7FD1148099B1380A718C1C5FA" alt="image"></li>
+<li>提高开发效率</li>
+<li>性能高/功能强</li>
+</ol>
+<p>用途</p>
+<ol>
+<li>去掉Activities &amp; Fragments内的UI代码</li>
+<li>XML变成UI的唯一真实来源</li>
+<li>减少定义View id 的主要用途</li>
+</ol>
+<p>类似方案</p>
+<ol>
+<li>ButterKnife</li>
+<li>Andriod Annotations</li>
+<li>RoboBinding</li>
+</ol>
+<p>优势</p>
+<ol>
+<li>去除Activity/Fragment中的U代码</li>
+<li>性能超过手写代码，安全（不会id错而crash）</li>
+<li>保证执行在主线程</li>
+</ol>
+<p>主要劣势</p>
+<ol>
+<li>IDE支持还不那么完善</li>
+<li>报错信息不那么直接</li>
+<li>没有重构支持</li>
+</ol>
+<h2 id="使用Data-Binding"><a href="#使用Data-Binding" class="headerlink" title="使用Data Binding"></a>使用Data Binding</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">app Module</span><br><span class="line">android &#123;</span><br><span class="line">    compileSdkVersion rootProject.ext.compileSdkVersion</span><br><span class="line">    ...</span><br><span class="line">    dataBinding&#123;</span><br><span class="line">        enabled = true</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Layout文件改写"><a href="#Layout文件改写" class="headerlink" title="Layout文件改写"></a>Layout文件改写</h3><p>在源layout文件外套一层标签</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;layout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;&gt;</span><br><span class="line">    &lt;RelativeLayout</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;match_parent&quot;</span><br><span class="line">        android:background=&quot;@color/c_FFFFFF&quot;&gt;</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    &lt;/RelativeLayout&gt;</span><br><span class="line">&lt;/layout&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="除去findviewbyID"><a href="#除去findviewbyID" class="headerlink" title="除去findviewbyID"></a>除去findviewbyID</h3><ol>
+<li>No more findviewbyID</li>
+<li>Binding.xxxView</li>
+<li>生成规则</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;layout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;</span><br><span class="line">    xmlns:tools=&quot;http://schemas.android.com/tools&quot;&gt;</span><br><span class="line">    &lt;TextView</span><br><span class="line">        android:id=&quot;@+id/tv_first_name&quot;</span><br><span class="line">        android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">        android:layout_height=&quot;wrap_content&quot; /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;TextView</span><br><span class="line">        android:id=&quot;@+id/tv_last_name&quot;</span><br><span class="line">        android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">        android:layout_height=&quot;wrap_content&quot; /&gt;</span><br><span class="line">&lt;/layout&gt;</span><br><span class="line">                </span><br><span class="line">Employee employee = new Employee(&quot;Tom&quot;, &quot;Jack&quot;);</span><br><span class="line"></span><br><span class="line">AtyDataBindingBinding binding = DataBindingUtil.setContentView(this, R.layout.aty_data_binding);</span><br><span class="line">binding.tvFirstName.setText(employee.getFirstName());</span><br><span class="line">binding.tvLastName.setText(employee.getLastName());</span><br><span class="line"></span><br><span class="line">aty_data_binding 对应的是  AtyDataBindingBinding</span><br><span class="line">tv_first_name  对应的是 tvFirstName</span><br></pre></td></tr></table></figure>
+<h3 id="UI-事件绑定"><a href="#UI-事件绑定" class="headerlink" title="UI/事件绑定"></a>UI/事件绑定</h3><ol>
+<li>Bind UI  setXXX  setVariable</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;layout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;</span><br><span class="line">    xmlns:tools=&quot;http://schemas.android.com/tools&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;data&gt;</span><br><span class="line"></span><br><span class="line">        &lt;variable</span><br><span class="line">            name=&quot;employee&quot;</span><br><span class="line">            type=&quot;com.mao.cn.learnDevelopProject.model.Employee&quot; /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/data&gt;</span><br><span class="line"></span><br><span class="line">    &lt;LinearLayout</span><br><span class="line">        android:id=&quot;@+id/rl_content&quot;</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;match_parent&quot;</span><br><span class="line">        android:layout_below=&quot;@+id/rl_header&quot;</span><br><span class="line">        android:orientation=&quot;vertical&quot;&gt;</span><br><span class="line"></span><br><span class="line">        &lt;EditText</span><br><span class="line">            android:layout_width=&quot;match_parent&quot;</span><br><span class="line">            android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">            android:text=&quot;输入 first name&quot; /&gt;</span><br><span class="line"></span><br><span class="line">        &lt;EditText</span><br><span class="line">            android:layout_width=&quot;match_parent&quot;</span><br><span class="line">            android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">            android:text=&quot;输入 last name&quot; /&gt;</span><br><span class="line"></span><br><span class="line">        &lt;TextView</span><br><span class="line">            android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">            android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">            android:text=&quot;@&#123;employee.firstName&#125;&quot; /&gt;</span><br><span class="line"></span><br><span class="line">        &lt;TextView</span><br><span class="line">            android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">            android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">            android:text=&quot;@&#123;employee.lastName&#125;&quot; /&gt;</span><br><span class="line">    &lt;/LinearLayout&gt;</span><br><span class="line"></span><br><span class="line">&lt;/layout&gt;</span><br><span class="line"></span><br><span class="line"> AtyDataBindingBinding binding = DataBindingUtil.setContentView(this, R.layout.aty_data_binding);</span><br><span class="line">binding.setEmployee(employee);</span><br><span class="line">// 两种方式都可以</span><br><span class="line">//binding.setVariable(com.mao.cn.learnDevelopProject.BR.employee,mEmployee);</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><p>事件</p>
+<ol>
+<li>andriod:onClick</li>
+<li>android:onLongClick</li>
+<li>android:onTextChanged</li>
+<li>…</li>
+<li>方法引用</li>
+<li>监听器绑定</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">&lt;variable</span><br><span class="line">    name=&quot;presenter&quot;</span><br><span class="line">    type=&quot;com.mao.cn.learnDevelopProject.ui.activity.DataBindingActivity.Presenter&quot;/&gt;</span><br><span class="line">&lt;EditText</span><br><span class="line">    android:id=&quot;@+id/tab&quot;</span><br><span class="line">    android:layout_width=&quot;match_parent&quot;</span><br><span class="line">    android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">    android:onTextChanged=&quot;@&#123;presenter.onTextChanged&#125;&quot;</span><br><span class="line">    android:text=&quot;输入 first name&quot; /&gt;   </span><br><span class="line">&lt;TextView</span><br><span class="line">    android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">    android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">    android:onClick=&quot;@&#123;presenter.onclick&#125;&quot;</span><br><span class="line">    android:text=&quot;@&#123;employee.firstName&#125;&quot; /&gt;</span><br><span class="line">&lt;TextView</span><br><span class="line">    android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">    android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">    android:onClick=&quot;@&#123;()-&gt;presenter.onClickListenerBinding(employee)&#125;&quot;</span><br><span class="line">    android:text=&quot;@&#123;employee.lastName&#125;&quot; /&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class DataBindingActivity extends RxAppCompatActivity &#123;</span><br><span class="line"></span><br><span class="line">    private Employee mEmployee = new Employee(&quot;Tom&quot;, &quot;Jack&quot;);</span><br><span class="line">    AtyDataBindingBinding binding;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(@Nullable Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        binding = DataBindingUtil.setContentView(this, R.layout.aty_data_binding);</span><br><span class="line">        binding.setEmployee(mEmployee);</span><br><span class="line">        binding.setPresenter(new Presenter());</span><br><span class="line">        //binding.setVariable(BR.employee, mEmployee);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public class Presenter &#123;</span><br><span class="line">        // 方法引用</span><br><span class="line">        public void onTextChanged(CharSequence text, int start, int lengthBefore, int lengthAfter) &#123;</span><br><span class="line">            mEmployee.setFirstName(text.toString());</span><br><span class="line">            binding.setEmployee(mEmployee);</span><br><span class="line">        &#125;</span><br><span class="line">        //  方法引用</span><br><span class="line">        public void onClick(View view)&#123;</span><br><span class="line">            ToastUtils.show(&quot;点击了&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        //监听器绑定</span><br><span class="line">        public void onClickListenerBinding(Employee employee)&#123;</span><br><span class="line">            ToastUtils.show(&quot;点击了&quot;+employee.getLastName());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Data-Binding-原理"><a href="#Data-Binding-原理" class="headerlink" title="Data Binding 原理"></a>Data Binding 原理</h3><ol>
+<li>android.binding</li>
+<li>BR</li>
+<li>XxxBinding</li>
+</ol>
+<p>开始编译–&gt;处理layout文件–&gt;解析表达式–&gt;java编译–&gt;解析依赖–&gt;找到setter</p>
+<p>性能:</p>
+<ol>
+<li>0反射</li>
+<li>findViewById需要遍历整个viewgroup,现在只需做一次</li>
+<li>使用位标记来检验更新</li>
+<li>数据改变在下一次批量更新才会触发操作</li>
+<li>缓存表达式，如：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a?(b?c:d):e</span><br><span class="line">f?(b?c:d):f</span><br></pre></td></tr></table></figure>
+<h3 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h3><ol>
+<li>二元 &amp;|^</li>
+<li>一元 =-!~/</li>
+<li>移位 &gt;&gt; &lt;&lt;  &gt;&gt;&gt;</li>
+<li>比较 == &gt; &lt; &gt;= &lt;=</li>
+<li>Instanceof</li>
+<li>Grouping()</li>
+<li>文字 character,String,numeric,null</li>
+<li>Cast 类型转换</li>
+<li>方法调用</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;EditText</span><br><span class="line">    android:id=&quot;@+id/tab&quot;</span><br><span class="line">    android:layout_width=&quot;match_parent&quot;</span><br><span class="line">    android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">    android:onTextChanged=&quot;@&#123;presenter::onTextChanged&#125;&quot;</span><br><span class="line">    android:text=&quot;输入 first name&quot; /&gt;</span><br></pre></td></tr></table></figure>
+<ol start="10">
+<li>Feild访问</li>
+<li>Array 访问[]</li>
+<li>三元 ?:</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;ata&gt;</span><br><span class="line">    &lt;import type=&quot;android.util.SparseArray&quot;/&gt;</span><br><span class="line">    &lt;import type=&quot;android.view.View&quot; /&gt;</span><br><span class="line">    &lt;import type=&quot;java.util.Map&quot;/&gt;</span><br><span class="line">    &lt;import type=&quot;java.util.List&quot;/&gt;</span><br><span class="line">    &lt;variable name=&quot;list&quot; type=&quot;List&lt;String&gt;&quot;/&gt;</span><br><span class="line">    &lt;variable name=&quot;sparse&quot; type=&quot;SparseArray&lt;String&gt;&quot;/&gt;</span><br><span class="line">    &lt;variable name=&quot;map&quot; type=&quot;Map&lt;String, String&gt;&quot;/&gt;</span><br><span class="line">    &lt;variable name=&quot;index&quot; type=&quot;int&quot;/&gt;</span><br><span class="line">    &lt;variable name=&quot;key&quot; type=&quot;String&quot;/&gt;</span><br><span class="line">&lt;/data&gt;</span><br><span class="line">&lt;TextView</span><br><span class="line">    android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">    android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">    android:onClick=&quot;@&#123;()-&gt;presenter.onClickListenerBinding(employee)&#125;&quot;</span><br><span class="line">    android:text=&quot;@&#123;employee.lastName&#125;&quot;</span><br><span class="line">    android:visibility=&quot;@&#123;employee.goodGuy? View.VISIBLE:View.GONE&#125;&quot; /&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="表达式-缺省"><a href="#表达式-缺省" class="headerlink" title="表达式-缺省"></a>表达式-缺省</h3><ol>
+<li>this</li>
+<li>super</li>
+<li>new</li>
+<li>显示泛型调用 Explicit generic invocation</li>
+</ol>
+<h3 id="null-合并运算符"><a href="#null-合并运算符" class="headerlink" title="null 合并运算符 ??"></a>null 合并运算符 ??</h3><p>取非空表达式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">null 合并运算符：??  等同于  ?:</span><br><span class="line">android:text=“@&#123;user.displayName ?? user.lastName&#125;”  </span><br><span class="line">android:text=“@&#123;user.displayName != null ? user.displayName : user.lastName&#125;”</span><br></pre></td></tr></table></figure>
+<h3 id="表达式eg"><a href="#表达式eg" class="headerlink" title="表达式eg"></a>表达式eg</h3><p>Margin @dimen+@dimen</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">android:text=&quot;@&#123;String.valueOf(index + 1)&#125;&quot;</span><br><span class="line">android:visibility=&quot;@&#123;age &lt; 13 ? View.GONE : View.VISIBLE&#125;&quot;</span><br><span class="line">android:transitionName=&apos;@&#123;&quot;image_&quot; + id&#125;&apos;</span><br></pre></td></tr></table></figure>
+<h3 id="避免空指针"><a href="#避免空指针" class="headerlink" title="避免空指针"></a>避免空指针</h3><ol>
+<li><p>自动空指针检查<br>Data Binding 代码生成时会自动检查是否为 null，来避免出现 null pointer exception 错误，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">例如在表达式 @&#123;user.name&#125; 中，</span><br><span class="line">如果 user 是 null，user.name 会赋予它的默认值 null，</span><br><span class="line">如果你引用 @&#123;user.age&#125;，age 是 int 类型，那么它的默认值是 0</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>数据越界 需要自己注意</p>
+</li>
+</ol>
+<h3 id="include"><a href="#include" class="headerlink" title="include"></a>include</h3><ol>
+<li>bind</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=“1.0” encoding=“utf-8”?&gt;  </span><br><span class="line">&lt;layout xmlns:android=“http://schemas.android.com/apk/res/android”  </span><br><span class="line">        xmlns:bind=“http://schemas.android.com/apk/res-auto”&gt;  </span><br><span class="line">   &lt;data&gt;  </span><br><span class="line">       &lt;variable name=“user” type=“com.example.User”/&gt;  </span><br><span class="line">   &lt;/data&gt;  </span><br><span class="line">   &lt;LinearLayout  </span><br><span class="line">       android:orientation=“vertical”  </span><br><span class="line">       android:layout_width=“match_parent”  </span><br><span class="line">       android:layout_height=“match_parent”&gt;  </span><br><span class="line">       &lt;include layout=“@layout/name”  </span><br><span class="line">           bind:user=“@&#123;user&#125;”/&gt;  </span><br><span class="line">       &lt;include layout=“@layout/contact”  </span><br><span class="line">           bind:user=“@&#123;user&#125;”/&gt;  </span><br><span class="line">   &lt;/LinearLayout&gt;  </span><br><span class="line">&lt;/layout&gt;</span><br><span class="line">在这里，必须有两 name.xml 和 contact.xml 布局文件的用户变量</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>尚不支持direct child 如 root 未 merge</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">据绑定不支持包括合并元素的直接子项。例如，不支持下列布局：</span><br><span class="line">&lt;?xml version=“1.0” encoding=“utf-8”?&gt;  </span><br><span class="line">&lt;layout xmlns:android=“http://schemas.android.com/apk/res/android”  </span><br><span class="line">        xmlns:bind=“http://schemas.android.com/apk/res-auto”&gt;  </span><br><span class="line">   &lt;data&gt;  </span><br><span class="line">       &lt;variable name=“user” type=“com.example.User”/&gt;  </span><br><span class="line">   &lt;/data&gt;  </span><br><span class="line">   &lt;merge&gt;  </span><br><span class="line">       &lt;include layout=“@layout/name”  </span><br><span class="line">           bind:user=“@&#123;user&#125;”/&gt;  </span><br><span class="line">       &lt;include layout=“@layout/contact”  </span><br><span class="line">           bind:user=“@&#123;user&#125;”/&gt;  </span><br><span class="line">   &lt;/merge&gt;  </span><br><span class="line">&lt;/layout&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="viewstub"><a href="#viewstub" class="headerlink" title="viewstub"></a>viewstub</h3><p>ViewStub 相比普通 View 有一些不同。ViewStub 一开始是不可见的，当它们被设置为可见，或者调用 inflate 方法时，ViewStub 会被替换成另外一个布局。</p>
+<p>因为 ViewStub 实际上不存在于 View 结构中，binding 类中的类也得移除掉，以便系统回收。因为 binding 类中的 View 都是 final 的，所以Android 提供了一个叫 ViewStubProxy 的类来代替 ViewStub 。开发者可以使用它来操作 ViewStub，获取 ViewStub inflate 时得到的视图。</p>
+<p>但 inflate 一个新的布局时，必须为新的布局创建一个 binding。因此， ViewStubProxy 必须监听 ViewStub 的 ViewStub.OnInflateListener，并及时建立 binding。由于 ViewStub 只能有一个 OnInflateListener，你可以将你自己的 listener 设置在 ViewStubProxy 上，在 binding 建立之后， listener 就会被触发。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">binding.viewStub.setOnInflateListener(new ViewStub.OnInflateListener() &#123;</span><br><span class="line">         @Override</span><br><span class="line">         public void onInflate(ViewStub viewStub, View view) &#123;</span><br><span class="line">             EmployeeUser mEmployee = new EmployeeUser(&quot;Mao&quot;, &quot;XianYu&quot;);</span><br><span class="line">             ViewstubBinding bind = DataBindingUtil.bind(view);</span><br><span class="line">             assert bind != null;</span><br><span class="line">             bind.setEmployeeUser(mEmployee);</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;);</span><br><span class="line">     Objects.requireNonNull(binding.viewStub.getViewStub()).inflate();</span><br></pre></td></tr></table></figure>
+<h3 id="数据对象-Data-Objects"><a href="#数据对象-Data-Objects" class="headerlink" title="数据对象 (Data Objects)"></a>数据对象 (Data Objects)</h3><p>任何 POJO 对象都能用在 Data Binding 中，但是更改 POJO 并不会同步更新 UI。Data Binding 的强大之处就在于它可以让你的数据拥有更新通知的能力。</p>
+<p>有三种不同的动态更新数据的机制：</p>
+<ol>
+<li>Observable 对象</li>
+<li>Observable 字段</li>
+<li>Observable 容器类<br>当以上的 observable 对象绑定在 UI 上，数据发生变化时，UI 就会同步更新。</li>
+</ol>
+<ul>
+<li>Observable 对象</li>
+</ul>
+<p>当一个类实现了 Observable 接口时，Data Binding 会设置一个 listener 在绑定的对象上，以便监听对象字段的变动。</p>
+<p>Observable 接口有一个添加/移除 listener 的机制，但通知取决于开发者。为了简化开发，Android 原生提供了一个基类 BaseObservable 来实现 listener 注册机制。这个类也实现了字段变动的通知，只需要在 getter 上使用 Bindable 注解，并在 setter 中通知更新即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">public class Employee  extends BaseObservable implements Serializable &#123;</span><br><span class="line"></span><br><span class="line">    private String firstName;</span><br><span class="line">    private String lastName;</span><br><span class="line">    private boolean isGoodGuy;</span><br><span class="line">    private boolean mIsFired;</span><br><span class="line"></span><br><span class="line">    public Employee(String firstName, String lastName) &#123;</span><br><span class="line">        this.firstName = firstName;</span><br><span class="line">        this.lastName = lastName;</span><br><span class="line">        this.isGoodGuy = true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Employee() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Bindable</span><br><span class="line">    public String getFirstName() &#123;</span><br><span class="line">        return firstName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setFirstName(String firstName) &#123;</span><br><span class="line">        this.firstName = firstName;</span><br><span class="line">        notifyPropertyChanged(BR.firstName);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Bindable</span><br><span class="line">    public String getLastName() &#123;</span><br><span class="line">        return lastName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setLastName(String lastName) &#123;</span><br><span class="line">        this.lastName = lastName;</span><br><span class="line">        notifyPropertyChanged(BR.lastName);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public boolean isGoodGuy() &#123;</span><br><span class="line">        return isGoodGuy;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setGoodGuy(boolean goodGuy) &#123;</span><br><span class="line">        this.isGoodGuy = goodGuy;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public boolean ismIsFired() &#123;</span><br><span class="line">        return mIsFired;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setmIsFired(boolean mIsFired) &#123;</span><br><span class="line">        this.mIsFired = mIsFired;</span><br><span class="line">        notifyChange();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String toString() &#123;</span><br><span class="line">        return &quot;Employee&#123;&quot; +</span><br><span class="line">                &quot;firstName=&apos;&quot; + firstName + &apos;\&apos;&apos; +</span><br><span class="line">                &quot;, lastName=&apos;&quot; + lastName + &apos;\&apos;&apos; +</span><br><span class="line">                &apos;&#125;&apos;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">当数据发生变化时需要调用 notifyPropertyChanged(BR.firstName) 通知系统 BR.firstName 这个 entry 的数据已经发生变化以更新UI。</span><br></pre></td></tr></table></figure>
+<ul>
+<li>ObservableFields</li>
+</ul>
+<p>创建 Observable 类还是需要花费一点时间的，如果想要省时，或者数据类的字段很少的话，可以使用 ObservableField 以及它的派生 ObservableBoolean、<br>ObservableByte 、ObservableChar、ObservableShort、ObservableInt、ObservableLong、ObservableFloat、ObservableDouble、<br>ObservableParcelable 。</p>
+<p>ObservableFields 是包含 observable 对象的单一字段。原始版本避免了在存取过程中做打包/解包操作。要使用它，在数据类中创建一个 public final 字段：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public class Employee extends BaseObservable implements Serializable &#123;</span><br><span class="line">    public ObservableField&lt;String&gt; name = new ObservableField&lt;&gt;();</span><br><span class="line">    </span><br><span class="line">    //构造 添加数据</span><br><span class="line">    public Employee(String firstName, String lastName) &#123;</span><br><span class="line">        this.firstName = firstName;</span><br><span class="line">        this.lastName = lastName;</span><br><span class="line">        // set 为赋值  get 为取值</span><br><span class="line">        name.set(&quot;Employee&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 布局文件中获取</span><br><span class="line">&lt;TextView</span><br><span class="line">    android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">    android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">    android:text=&quot;@&#123;employee.name&#125;&quot;</span><br><span class="line">    android:textColor=&quot;@color/c_69C614&quot; /&gt;</span><br></pre></td></tr></table></figure>
+<p>ObservableBoolean</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public class Employee extends BaseObservable implements Serializable &#123;</span><br><span class="line">    public ObservableBoolean isFired = new ObservableBoolean();</span><br><span class="line">    </span><br><span class="line">    //构造 添加数据</span><br><span class="line">    public Employee(String firstName, String lastName) &#123;</span><br><span class="line">        this.firstName = firstName;</span><br><span class="line">        this.lastName = lastName;</span><br><span class="line">        // set 为赋值  get 为取值</span><br><span class="line">        isFired.set(false);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 布局文件中获取</span><br><span class="line">&lt;TextView</span><br><span class="line">    android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">    android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">    android:onClick=&quot;@&#123;(view)-&gt;presenter.onClickListenerBinding(employee)&#125;&quot;</span><br><span class="line">    android:text=&quot;@&#123;String.valueOf(1+2)&#125;&quot;</span><br><span class="line">    android:visibility=&quot;@&#123;employee.isFired?View.VISIBLE:View.GONE&#125;&quot; /&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Observable Collections 容器类</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">public class Employee extends BaseObservable implements Serializable &#123;</span><br><span class="line">    public ObservableArrayMap&lt;String, String&gt; user = new ObservableArrayMap&lt;&gt;();</span><br><span class="line">    </span><br><span class="line">    //构造 添加数据</span><br><span class="line">    public Employee(String firstName, String lastName) &#123;</span><br><span class="line">        this.firstName = firstName;</span><br><span class="line">        this.lastName = lastName;</span><br><span class="line">        // put 为赋值  get 为取值</span><br><span class="line">        user.put(&quot;hello&quot;, &quot;world&quot;);</span><br><span class="line">        user.put(&quot;blog&quot;, &quot;blog&quot;);</span><br><span class="line">        user.put(&quot;Jack&quot;, &quot;Jack World&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 布局文件中获取</span><br><span class="line">&lt;TextView</span><br><span class="line">    android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">    android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">    android:text=&apos;@&#123;employee.user[&quot;hello&quot;]&#125;&apos;</span><br><span class="line">    android:textColor=&quot;@color/c_9b6249&quot; /&gt;</span><br><span class="line"></span><br><span class="line">&lt;TextView</span><br><span class="line">    android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">    android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">    android:text=&apos;@&#123;employee.user[&quot;blog&quot;]&#125;&apos;</span><br><span class="line">    android:textColor=&quot;@color/c_ff4532&quot; /&gt;</span><br><span class="line"></span><br><span class="line">&lt;TextView</span><br><span class="line">    android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">    android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">    android:text=&apos;@&#123;employee.user[&quot;Jack&quot;]&#125;&apos;</span><br><span class="line">    android:textColor=&quot;@color/c_69C614&quot; /&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="高级动态绑定"><a href="#高级动态绑定" class="headerlink" title="高级动态绑定"></a>高级动态绑定</h3><ul>
+<li><p>RecyclerView</p>
+</li>
+<li><p>onBindViewHolder</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">final T item = mItems.get(position);</span><br><span class="line">holder.getBinbing().setVariable(BR.item,item);</span><br><span class="line">// 立即绑定，变量和Observable改变后，会在下一个帧进行绑定的改变，如果需要立即执行，可以执行executePendingBindings()</span><br><span class="line">holder.getBinbing().executePendingBindings();</span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>data binding 生成规则</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">contact_item.xml -&gt; ContactItemBinding  源码如是</span><br></pre></td></tr></table></figure>
+<ul>
+<li>自定义class<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;data class=&quot;ContactItem&quot;&gt;</span><br><span class="line">···</span><br><span class="line">&lt;/data&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>本文是在慕课网上学习的。</p>
+<ol>
+<li><a href="https://www.imooc.com/learn/719" target="_blank" rel="noopener">Android Data Binding入门</a> 有兴趣的朋友可以关注学习</li>
+<li>推荐大神Blog <a href="http://connorlin.github.io/2016/07/02/Android-Data-Binding-%E7%B3%BB%E5%88%97-%E4%B8%80-%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D%E4%B8%8E%E4%BD%BF%E7%94%A8/" target="_blank" rel="noopener">Android Data Binding 系列(一) – 详细介绍与使用</a>，提供学习。</li>
+<li>本文代码在<a href="https://github.com/maoai-xianyu/LearnDevelopProject" target="_blank" rel="noopener">GitHub项目-LearnDevelopProject</a>中，欢迎可以关注。</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.codingtk.com/2018/12/04/一：复杂度分析（1）-如何分析、统计算法的执行效率和资源消耗？/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1030,7 +1313,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
