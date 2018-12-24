@@ -262,6 +262,246 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.codingtk.com/2018/12/24/00-自定义控件/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="maoai_xianyu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/maoai_xianyu.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="maoai_xianyu'Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/24/00-自定义控件/" itemprop="url">00-自定义控件</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-24T23:51:15+08:00">
+                2018-12-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/自定义控件/" itemprop="url" rel="index">
+                    <span itemprop="name">自定义控件</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="自定义控件"><a href="#自定义控件" class="headerlink" title="自定义控件"></a>自定义控件</h2><p>视频学习概要，逐渐补充。</p>
+<h3 id="自定义控件的一些概念"><a href="#自定义控件的一些概念" class="headerlink" title="自定义控件的一些概念"></a>自定义控件的一些概念</h3><ol>
+<li>什么是自定义控件</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在Android系统中，用系统的自带控件重新组合或者自定义类继承View或者自定义类继承ViewGroup,实现特定的UI效果。</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><p>为什么要学习自定义控件</p>
+<ol>
+<li>系统的某一个控件，在不同的设备效果不一样，要统一风格</li>
+<li>整个软件在不同设备风格统一</li>
+<li>系统自带的控件，功能有限，增加功能；或者功能太多了，减掉功能</li>
+<li>自定义控件原则，如果系统可以满足，就不用，虽然可以写出很好的效果，但是会有对应的工作量和bug</li>
+</ol>
+</li>
+<li><p>自定义控件的重要性</p>
+<ol>
+<li>面试问题 1. View和ViewGroup的区别 2. Android中事件的传递 3. View的原理</li>
+<li>工作中的需求</li>
+</ol>
+</li>
+<li><p>常用控件的回顾</p>
+</li>
+</ol>
+<p>eg: TextView ProgressBar</p>
+<h3 id="用系统控件重新绘制"><a href="#用系统控件重新绘制" class="headerlink" title="用系统控件重新绘制"></a>用系统控件重新绘制</h3><ul>
+<li><p>优酷菜单</p>
+<ol>
+<li>分析实现原理</li>
+<li>通过布局实现效果</li>
+<li>代码处理逻辑</li>
+<li>动画原理</li>
+<li>优酷菜单做实验扩展</li>
+<li>扩展知识-动画的分类</li>
+<li>属性动画结解决bug</li>
+</ol>
+</li>
+<li><p>广告条效果</p>
+<ol>
+<li>ViewPager的使用</li>
+<li>广告条的基本功能<ol>
+<li>根据页面改变设置文本</li>
+<li>添加指示点</li>
+<li>支持左右无限滑动</li>
+<li>当手滑动或者按下的时间停止滑动</li>
+<li>添加点击事件</li>
+</ol>
+</li>
+<li>ViewPager扩展</li>
+<li>改进成引导页面</li>
+</ol>
+</li>
+<li><p>下拉框</p>
+<ol>
+<li>PopupWindow使用案例</li>
+<li>创建步骤</li>
+<li>代码中直接创建listview</li>
+<li>适配</li>
+</ol>
+</li>
+</ul>
+<h3 id="自定义类继承View"><a href="#自定义类继承View" class="headerlink" title="自定义类继承View"></a>自定义类继承View</h3><ul>
+<li><p>自定义开关</p>
+<ol>
+<li>自定义一个类继承View</li>
+<li>View绘制原理（重要）</li>
+<li>开关的点击事件</li>
+<li>开关的滑动事件</li>
+<li>解决事件冲突</li>
+</ol>
+</li>
+<li><p>自定义属性</p>
+<ol>
+<li>自定义属性步骤</li>
+<li>常用属性(format 常用类型 reference 引用 color 颜色 boolean 布尔值 dimension 尺寸值 integer 整型值 string 字符串 enum 枚举)</li>
+<li>布局文件解析和类的属性的关系</li>
+</ol>
+</li>
+<li><p>水波纹</p>
+<ol>
+<li>创建一个类</li>
+<li>画一个圆环</li>
+<li>播放动画，慢慢的变大</li>
+<li>点击的时候就开始画圆</li>
+<li>读另外工程的代码</li>
+</ol>
+</li>
+<li><p>联系人快速索引</p>
+</li>
+</ul>
+<h3 id="自定义类继承ViewGroup"><a href="#自定义类继承ViewGroup" class="headerlink" title="自定义类继承ViewGroup"></a>自定义类继承ViewGroup</h3><ul>
+<li>仿viewpager功能</li>
+<li>侧滑删除菜单</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
+<li>学习过程：<a href="https://www.bilibili.com/video/av22117545" target="_blank" rel="noopener">尚硅谷Android视频教程《自定义控件》</a> 杨光福IT讲师</li>
+<li>跟着视频学习，为自己积累经验。</li>
+<li>这个篇章需要一定的时间进行研究。</li>
+<li>项目在：<a href="https://github.com/maoai-xianyu/LearnDevelopProject" target="_blank" rel="noopener">maoai-xianyu’Github</a> 中总结。</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.codingtk.com/2018/12/06/Data-Binding实战/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1345,7 +1585,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1356,7 +1596,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -1367,7 +1607,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
