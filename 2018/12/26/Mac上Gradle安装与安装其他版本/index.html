@@ -79,34 +79,34 @@
 
 
 
-<meta name="description" content="Mac上Gradle安装与安装其他版本报错：==org.gradle.api.tasks.compile.CompileOptions.setBootClasspath(Ljava/lang/String;)V== 报错：==Android Studio Debug模式调试失败== 文章原因：  原因一：gradle的版本过高导致Android项目上的gradle打包命令失败，    原因二：在使">
+<meta name="description" content="Mac上Gradle安装与安装其他版本报错：==org.gradle.api.tasks.compile.CompileOptions.setBootClasspath(Ljava/lang/String;)V== 报错：==Android Studio Debug模式调试失败==">
 <meta name="keywords" content="gradle,gradle version">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mac上Gradle安装与安装其他版本">
 <meta property="og:url" content="http://www.codingtk.com/2018/12/26/Mac上Gradle安装与安装其他版本/index.html">
 <meta property="og:site_name" content="maoai_xianyu&#39;Blog">
-<meta property="og:description" content="Mac上Gradle安装与安装其他版本报错：==org.gradle.api.tasks.compile.CompileOptions.setBootClasspath(Ljava/lang/String;)V== 报错：==Android Studio Debug模式调试失败== 文章原因：  原因一：gradle的版本过高导致Android项目上的gradle打包命令失败，    原因二：在使">
+<meta property="og:description" content="Mac上Gradle安装与安装其他版本报错：==org.gradle.api.tasks.compile.CompileOptions.setBootClasspath(Ljava/lang/String;)V== 报错：==Android Studio Debug模式调试失败==">
 <meta property="og:locale" content="h-Hans">
-<meta property="og:image" content="http://note.youdao.com/yws/res/25005/7387B8D541C240F89F46558FCD9FC39F">
-<meta property="og:image" content="http://note.youdao.com/yws/res/25007/ADFC625150C94F64954A50767F1783C2">
-<meta property="og:image" content="http://note.youdao.com/yws/res/24985/F13D70CA079C46D8BFE87E7206532830">
-<meta property="og:image" content="http://note.youdao.com/yws/res/24987/2218B44C153A4AAD92EB69040E25A455">
-<meta property="og:image" content="http://note.youdao.com/yws/res/25016/597CB372686F4071BFBE11B4AFBFD8C9">
-<meta property="og:image" content="http://note.youdao.com/yws/res/25022/1DEC0724364B455F8C469CCC06FA3B5E">
-<meta property="og:image" content="http://note.youdao.com/yws/res/25031/11A6E3CAF1064470B1ACBA10C981B1C8">
-<meta property="og:image" content="http://note.youdao.com/yws/res/25045/E6B9E5834AA1482F9B0682F874976FF8">
-<meta property="og:image" content="http://note.youdao.com/yws/res/25050/1785FE1D055E45DD87786DD99B0F4C28">
-<meta property="og:image" content="http://note.youdao.com/yws/res/25056/A692B4615FF54C7695B5183B7EAE056C">
-<meta property="og:image" content="https://note.youdao.com/src/95653F86369845CC9201B9BA5D43CBBA">
-<meta property="og:image" content="https://note.youdao.com/src/9DEA551D338342C7A13C0EB554DDA339">
-<meta property="og:image" content="http://note.youdao.com/yws/res/25063/6B6EBE5033104935909EC99CCD078289">
-<meta property="og:image" content="http://note.youdao.com/yws/res/25066/FD7A82A5E5AB448BBD3D2E9A1323536E">
-<meta property="og:image" content="http://note.youdao.com/yws/res/25067/4E4DE6A1AB4741BBB6AACDD9D3F5010B">
-<meta property="og:updated_time" content="2018-12-26T07:16:35.017Z">
+<meta property="og:image" content="http://note.youdao.com/yws/public/resource/a9600243aef545516065218cc469e3da/7387B8D541C240F89F46558FCD9FC39F?ynotemdtimestamp=1545808939354">
+<meta property="og:image" content="http://note.youdao.com/yws/public/resource/a9600243aef545516065218cc469e3da/ADFC625150C94F64954A50767F1783C2?ynotemdtimestamp=1545808939354">
+<meta property="og:image" content="http://note.youdao.com/yws/public/resource/a9600243aef545516065218cc469e3da/F13D70CA079C46D8BFE87E7206532830?ynotemdtimestamp=1545808939354">
+<meta property="og:image" content="http://note.youdao.com/yws/public/resource/a9600243aef545516065218cc469e3da/2218B44C153A4AAD92EB69040E25A455?ynotemdtimestamp=1545808939354">
+<meta property="og:image" content="http://note.youdao.com/yws/public/resource/a9600243aef545516065218cc469e3da/597CB372686F4071BFBE11B4AFBFD8C9?ynotemdtimestamp=1545808939354">
+<meta property="og:image" content="http://note.youdao.com/yws/public/resource/a9600243aef545516065218cc469e3da/1DEC0724364B455F8C469CCC06FA3B5E?ynotemdtimestamp=1545808939354">
+<meta property="og:image" content="http://note.youdao.com/yws/public/resource/a9600243aef545516065218cc469e3da/11A6E3CAF1064470B1ACBA10C981B1C8?ynotemdtimestamp=1545808939354">
+<meta property="og:image" content="http://note.youdao.com/yws/public/resource/a9600243aef545516065218cc469e3da/E6B9E5834AA1482F9B0682F874976FF8?ynotemdtimestamp=1545808939354">
+<meta property="og:image" content="http://note.youdao.com/yws/public/resource/a9600243aef545516065218cc469e3da/1785FE1D055E45DD87786DD99B0F4C28?ynotemdtimestamp=1545808939354">
+<meta property="og:image" content="http://note.youdao.com/yws/public/resource/a9600243aef545516065218cc469e3da/A692B4615FF54C7695B5183B7EAE056C?ynotemdtimestamp=1545808939354">
+<meta property="og:image" content="http://note.youdao.com/yws/public/resource/a9600243aef545516065218cc469e3da/95653F86369845CC9201B9BA5D43CBBA?ynotemdtimestamp=1545808939354">
+<meta property="og:image" content="http://note.youdao.com/yws/public/resource/a9600243aef545516065218cc469e3da/9DEA551D338342C7A13C0EB554DDA339?ynotemdtimestamp=1545808939354">
+<meta property="og:image" content="http://note.youdao.com/yws/public/resource/a9600243aef545516065218cc469e3da/6B6EBE5033104935909EC99CCD078289?ynotemdtimestamp=1545808939354">
+<meta property="og:image" content="http://note.youdao.com/yws/public/resource/a9600243aef545516065218cc469e3da/FD7A82A5E5AB448BBD3D2E9A1323536E?ynotemdtimestamp=1545808939354">
+<meta property="og:image" content="http://note.youdao.com/yws/public/resource/a9600243aef545516065218cc469e3da/4E4DE6A1AB4741BBB6AACDD9D3F5010B?ynotemdtimestamp=1545808939354">
+<meta property="og:updated_time" content="2018-12-26T07:26:37.587Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mac上Gradle安装与安装其他版本">
-<meta name="twitter:description" content="Mac上Gradle安装与安装其他版本报错：==org.gradle.api.tasks.compile.CompileOptions.setBootClasspath(Ljava/lang/String;)V== 报错：==Android Studio Debug模式调试失败== 文章原因：  原因一：gradle的版本过高导致Android项目上的gradle打包命令失败，    原因二：在使">
-<meta name="twitter:image" content="http://note.youdao.com/yws/res/25005/7387B8D541C240F89F46558FCD9FC39F">
+<meta name="twitter:description" content="Mac上Gradle安装与安装其他版本报错：==org.gradle.api.tasks.compile.CompileOptions.setBootClasspath(Ljava/lang/String;)V== 报错：==Android Studio Debug模式调试失败==">
+<meta name="twitter:image" content="http://note.youdao.com/yws/public/resource/a9600243aef545516065218cc469e3da/7387B8D541C240F89F46558FCD9FC39F?ynotemdtimestamp=1545808939354">
 
 
 
@@ -370,15 +370,16 @@
       
         <h2 id="Mac上Gradle安装与安装其他版本"><a href="#Mac上Gradle安装与安装其他版本" class="headerlink" title="Mac上Gradle安装与安装其他版本"></a>Mac上Gradle安装与安装其他版本</h2><p>报错：==org.gradle.api.tasks.compile.CompileOptions.setBootClasspath(Ljava/lang/String;)V==</p>
 <p>报错：==Android Studio Debug模式调试失败==</p>
+<a id="more"></a>
 <p>文章原因：</p>
 <ol>
 <li>原因一：gradle的版本过高导致Android项目上的gradle打包命令失败，</li>
 </ol>
-<p><img src="http://note.youdao.com/yws/res/25005/7387B8D541C240F89F46558FCD9FC39F" alt="image"></p>
+<p><img src="http://note.youdao.com/yws/public/resource/a9600243aef545516065218cc469e3da/7387B8D541C240F89F46558FCD9FC39F?ynotemdtimestamp=1545808939354" alt="image"></p>
 <ol start="2">
 <li>原因二：在使用本地的gradle，导致debug调试失败</li>
 </ol>
-<p><img src="http://note.youdao.com/yws/res/25007/ADFC625150C94F64954A50767F1783C2" alt="image"></p>
+<p><img src="http://note.youdao.com/yws/public/resource/a9600243aef545516065218cc469e3da/ADFC625150C94F64954A50767F1783C2?ynotemdtimestamp=1545808939354" alt="image"></p>
 <h3 id="准备工具"><a href="#准备工具" class="headerlink" title="准备工具"></a>准备工具</h3><ol>
 <li>在mac上下载<a href="https://www.iterm2.com/" target="_blank" rel="noopener">iTerm2</a>，用于命令终端</li>
 <li>在Mac上下载<a href="https://brew.sh/" target="_blank" rel="noopener">brew package manager</a></li>
@@ -389,27 +390,27 @@
 <li><p>下载成功后执行</p>
 <ol>
 <li><p>brew info gradle 查看gradle的信息</p>
-<p><img src="http://note.youdao.com/yws/res/24985/F13D70CA079C46D8BFE87E7206532830" alt="image"></p>
+<p><img src="http://note.youdao.com/yws/public/resource/a9600243aef545516065218cc469e3da/F13D70CA079C46D8BFE87E7206532830?ynotemdtimestamp=1545808939354" alt="image"></p>
 </li>
 <li><p>gradle -v 查看gradle的版本信息</p>
-<p><img src="http://note.youdao.com/yws/res/24987/2218B44C153A4AAD92EB69040E25A455" alt="image"></p>
+<p><img src="http://note.youdao.com/yws/public/resource/a9600243aef545516065218cc469e3da/2218B44C153A4AAD92EB69040E25A455?ynotemdtimestamp=1545808939354" alt="image"></p>
 </li>
 </ol>
 </li>
 <li><p>执行上面的命令，下载的是目前<strong>brew</strong>中最新的gradle版本，我的目前是 <a href="https://github.com/Homebrew/homebrew-core/blob/master/Formula/gradle.rb" target="_blank" rel="noopener">gradle 5.0</a></p>
 </li>
 </ol>
-<p><img src="http://note.youdao.com/yws/res/25016/597CB372686F4071BFBE11B4AFBFD8C9" alt="image"></p>
+<p><img src="http://note.youdao.com/yws/public/resource/a9600243aef545516065218cc469e3da/597CB372686F4071BFBE11B4AFBFD8C9?ynotemdtimestamp=1545808939354" alt="image"></p>
 <h3 id="下载其他版本的gradle"><a href="#下载其他版本的gradle" class="headerlink" title="下载其他版本的gradle"></a>下载其他版本的gradle</h3><p>下载其他版本的 <strong>gradle</strong> 是为了可以解决上面的报错</p>
 <ol>
 <li>下载需要安装的<a href="https://gradle.org/releases/" target="_blank" rel="noopener">gradle版本</a>，我这里是 <a href="https://gradle.org/next-steps/?version=4.6&amp;format=bin" target="_blank" rel="noopener">gradle 4.6</a></li>
 </ol>
-<p><img src="http://note.youdao.com/yws/res/25022/1DEC0724364B455F8C469CCC06FA3B5E" alt="image"></p>
+<p><img src="http://note.youdao.com/yws/public/resource/a9600243aef545516065218cc469e3da/1DEC0724364B455F8C469CCC06FA3B5E?ynotemdtimestamp=1545808939354" alt="image"></p>
 <ol start="2">
 <li>查看文件sha256</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">openssl dgst -sha256 [gradle-4.6-all.zip的路径，可以直接拖进来]</span><br><span class="line"></span><br><span class="line">gradle 4.6对应的 sha256 是 9af7345c199f1731c187c96d3fe3d31f5405192a42046bafa71d846c3d9adacb</span><br></pre></td></tr></table></figure>
-<p><img src="http://note.youdao.com/yws/res/25031/11A6E3CAF1064470B1ACBA10C981B1C8" alt="image"></p>
+<p><img src="http://note.youdao.com/yws/public/resource/a9600243aef545516065218cc469e3da/11A6E3CAF1064470B1ACBA10C981B1C8?ynotemdtimestamp=1545808939354" alt="image"></p>
 <ol start="3">
 <li>下载brew的源码 <a href="https://github.com/Homebrew/homebrew-core" target="_blank" rel="noopener">homebrew-core</a></li>
 <li>在<strong>homebrew-core</strong> -&gt; Formula -&gt; 找到<strong>gradle.rb</strong>文件，copy一份出来，进行修改</li>
@@ -419,34 +420,37 @@
 <li>在iterm2中执行文件 gradle.rb</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install /Users/zhangkun/zk_develop/gradle/gradle.rb</span><br></pre></td></tr></table></figure>
-<p><img src="http://note.youdao.com/yws/res/25045/E6B9E5834AA1482F9B0682F874976FF8" alt="image"></p>
+<p><img src="http://note.youdao.com/yws/public/resource/a9600243aef545516065218cc469e3da/E6B9E5834AA1482F9B0682F874976FF8?ynotemdtimestamp=1545808939354" alt="image"></p>
 <ol start="6">
 <li>提示error后执行建议的命令 brew unlink gradle 减除关联</li>
 </ol>
-<p><img src="http://note.youdao.com/yws/res/25050/1785FE1D055E45DD87786DD99B0F4C28" alt="image"></p>
+<p><img src="http://note.youdao.com/yws/public/resource/a9600243aef545516065218cc469e3da/1785FE1D055E45DD87786DD99B0F4C28?ynotemdtimestamp=1545808939354" alt="image"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew unlink gradle</span><br></pre></td></tr></table></figure>
 <ol start="7">
 <li>然后继续第5步骤</li>
 </ol>
-<p><img src="http://note.youdao.com/yws/res/25056/A692B4615FF54C7695B5183B7EAE056C" alt="image"></p>
+<p><img src="http://note.youdao.com/yws/public/resource/a9600243aef545516065218cc469e3da/A692B4615FF54C7695B5183B7EAE056C?ynotemdtimestamp=1545808939354" alt="image"></p>
 <ol start="8">
 <li>执行 brew info gradle 查看安装的gradle的版本</li>
 </ol>
-<p><img src="https://note.youdao.com/src/95653F86369845CC9201B9BA5D43CBBA" alt="image"></p>
+<p><img src="http://note.youdao.com/yws/public/resource/a9600243aef545516065218cc469e3da/95653F86369845CC9201B9BA5D43CBBA?ynotemdtimestamp=1545808939354" alt="image"></p>
 <ol start="9">
 <li>切换版本  brew switch gradle 4.6</li>
 </ol>
-<p><img src="https://note.youdao.com/src/9DEA551D338342C7A13C0EB554DDA339" alt="image"></p>
+<p><img src="http://note.youdao.com/yws/public/resource/a9600243aef545516065218cc469e3da/9DEA551D338342C7A13C0EB554DDA339?ynotemdtimestamp=1545808939354" alt="image"></p>
 <ol start="10">
 <li>查看当前使用的版本 gradle -v</li>
 </ol>
-<p><img src="http://note.youdao.com/yws/res/25063/6B6EBE5033104935909EC99CCD078289" alt="image"></p>
+<p><img src="http://note.youdao.com/yws/public/resource/a9600243aef545516065218cc469e3da/6B6EBE5033104935909EC99CCD078289?ynotemdtimestamp=1545808939354" alt="image"></p>
 <h3 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h3><ol>
 <li>之后用gradle打包ok</li>
 <li>在Android Studio 中修改本地环境</li>
 </ol>
-<p><img src="http://note.youdao.com/yws/res/25066/FD7A82A5E5AB448BBD3D2E9A1323536E" alt="image"></p>
-<p><img src="http://note.youdao.com/yws/res/25067/4E4DE6A1AB4741BBB6AACDD9D3F5010B" alt="image"></p>
+<p><img src="http://note.youdao.com/yws/public/resource/a9600243aef545516065218cc469e3da/FD7A82A5E5AB448BBD3D2E9A1323536E?ynotemdtimestamp=1545808939354" alt="image"></p>
+<p><img src="http://note.youdao.com/yws/public/resource/a9600243aef545516065218cc469e3da/4E4DE6A1AB4741BBB6AACDD9D3F5010B?ynotemdtimestamp=1545808939354" alt="image"></p>
+<ol start="3">
+<li>本文参考 <a href="https://www.jianshu.com/p/a537d9a4034f" target="_blank" rel="noopener">homebrew 安装指定版本gradle（软件）</a></li>
+</ol>
 
       
     </div>
