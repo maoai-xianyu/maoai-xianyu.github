@@ -79,21 +79,21 @@
 
 
 
-<meta name="description" content="四个复杂度 最坏情况时间复杂度 代码在最理想情况下执行的时间复杂度。 最好情况时间复杂度：代码在最坏情况下执行的时间复杂度。 平均时间复杂度：用代码在所有情况下执行的次数的加权平均值表示。 均摊时间复杂度：在代码执行的所有复杂度情况中绝大部分是低级别的复杂度，个别情况是高级别复杂度且发生具有时序关系时，可以将个别高级别复杂度均摊到低级别复杂度上。基本上均摊结果就等于低级别复杂度。  1234567">
+<meta name="description" content="四个复杂度 最坏情况时间复杂度 代码在最理想情况下执行的时间复杂度。 最好情况时间复杂度：代码在最坏情况下执行的时间复杂度。 平均时间复杂度：用代码在所有情况下执行的次数的加权平均值表示。 均摊时间复杂度：在代码执行的所有复杂度情况中绝大部分是低级别的复杂度，个别情况是高级别复杂度且发生具有时序关系时，可以将个别高级别复杂度均摊到低级别复杂度上。基本上均摊结果就等于低级别复杂度。">
 <meta name="keywords" content="数据结构,算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="一：复杂度分析（2）-浅析最好、最坏、平均、均摊时间复杂度">
 <meta property="og:url" content="http://www.codingtk.com/2019/02/14/一：复杂度分析（2）-浅析最好、最坏、平均、均摊时间复杂度/index.html">
 <meta property="og:site_name" content="maoai_xianyu&#39;Blog">
-<meta property="og:description" content="四个复杂度 最坏情况时间复杂度 代码在最理想情况下执行的时间复杂度。 最好情况时间复杂度：代码在最坏情况下执行的时间复杂度。 平均时间复杂度：用代码在所有情况下执行的次数的加权平均值表示。 均摊时间复杂度：在代码执行的所有复杂度情况中绝大部分是低级别的复杂度，个别情况是高级别复杂度且发生具有时序关系时，可以将个别高级别复杂度均摊到低级别复杂度上。基本上均摊结果就等于低级别复杂度。  1234567">
+<meta property="og:description" content="四个复杂度 最坏情况时间复杂度 代码在最理想情况下执行的时间复杂度。 最好情况时间复杂度：代码在最坏情况下执行的时间复杂度。 平均时间复杂度：用代码在所有情况下执行的次数的加权平均值表示。 均摊时间复杂度：在代码执行的所有复杂度情况中绝大部分是低级别的复杂度，个别情况是高级别复杂度且发生具有时序关系时，可以将个别高级别复杂度均摊到低级别复杂度上。基本上均摊结果就等于低级别复杂度。">
 <meta property="og:locale" content="h-Hans">
 <meta property="og:image" content="http://note.youdao.com/yws/public/resource/39d00ecabfab65c552a92425eb15176e/722F4D682D234ACE97659796002E8EDB?ynotemdtimestamp=1550136148697">
 <meta property="og:image" content="http://note.youdao.com/yws/public/resource/39d00ecabfab65c552a92425eb15176e/5ABF6D48B8B74AEEA0DF3578838F2EB6?ynotemdtimestamp=1550136148697">
 <meta property="og:image" content="http://note.youdao.com/yws/public/resource/39d00ecabfab65c552a92425eb15176e/FFC87A517531405CB5DFA098B751B2A9?ynotemdtimestamp=1550136148697">
-<meta property="og:updated_time" content="2019-02-15T05:42:25.847Z">
+<meta property="og:updated_time" content="2019-02-15T06:00:50.433Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一：复杂度分析（2）-浅析最好、最坏、平均、均摊时间复杂度">
-<meta name="twitter:description" content="四个复杂度 最坏情况时间复杂度 代码在最理想情况下执行的时间复杂度。 最好情况时间复杂度：代码在最坏情况下执行的时间复杂度。 平均时间复杂度：用代码在所有情况下执行的次数的加权平均值表示。 均摊时间复杂度：在代码执行的所有复杂度情况中绝大部分是低级别的复杂度，个别情况是高级别复杂度且发生具有时序关系时，可以将个别高级别复杂度均摊到低级别复杂度上。基本上均摊结果就等于低级别复杂度。  1234567">
+<meta name="twitter:description" content="四个复杂度 最坏情况时间复杂度 代码在最理想情况下执行的时间复杂度。 最好情况时间复杂度：代码在最坏情况下执行的时间复杂度。 平均时间复杂度：用代码在所有情况下执行的次数的加权平均值表示。 均摊时间复杂度：在代码执行的所有复杂度情况中绝大部分是低级别的复杂度，个别情况是高级别复杂度且发生具有时序关系时，可以将个别高级别复杂度均摊到低级别复杂度上。基本上均摊结果就等于低级别复杂度。">
 <meta name="twitter:image" content="http://note.youdao.com/yws/public/resource/39d00ecabfab65c552a92425eb15176e/722F4D682D234ACE97659796002E8EDB?ynotemdtimestamp=1550136148697">
 
 
@@ -362,6 +362,7 @@
 <li>平均时间复杂度：用代码在所有情况下执行的次数的加权平均值表示。</li>
 <li>均摊时间复杂度：在代码执行的所有复杂度情况中绝大部分是低级别的复杂度，个别情况是高级别复杂度且发生具有时序关系时，可以将个别高级别复杂度均摊到低级别复杂度上。基本上均摊结果就等于低级别复杂度。</li>
 </ul>
+<a id="more"></a>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// n 表示数组 array 的长度</span><br><span class="line">int find(int[] array, int n, int x) &#123;</span><br><span class="line">int i = 0;</span><br><span class="line">int pos = -1;</span><br><span class="line">for (; i &lt; n; ++i) &#123;</span><br><span class="line">if (array[i] == x) &#123;</span><br><span class="line">pos = i;</span><br><span class="line">break;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">return pos;</span><br><span class="line">&#125;</span><br><span class="line">时间复杂度，用之前的就分析不了了，需要不同时间复杂度。最好，最坏，平均情况时间复杂度</span><br></pre></td></tr></table></figure>
 <h3 id="平均情况时间复杂度"><a href="#平均情况时间复杂度" class="headerlink" title="平均情况时间复杂度"></a>平均情况时间复杂度</h3><p>上述案例 </p>
 <ol>
