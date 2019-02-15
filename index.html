@@ -262,6 +262,228 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.codingtk.com/2019/02/15/二：数组：为什么很多编程语言中数组都从0开始编号？/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="maoai_xianyu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/maoai_xianyu.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="maoai_xianyu'Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/15/二：数组：为什么很多编程语言中数组都从0开始编号？/" itemprop="url">二：数组：为什么很多编程语言中数组都从0开始编号？</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-15T13:40:35+08:00">
+                2019-02-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="数组：为什么很多编程语言中数组都从0开始编号"><a href="#数组：为什么很多编程语言中数组都从0开始编号" class="headerlink" title="数组：为什么很多编程语言中数组都从0开始编号"></a>数组：为什么很多编程语言中数组都从0开始编号</h2><h3 id="一：什么是数组"><a href="#一：什么是数组" class="headerlink" title="一：什么是数组"></a>一：什么是数组</h3><p>数组（Array）是一种线性表数据结构。它用一组连续的内存空间，来存储一组具有相同类型的数据。</p>
+<h4 id="线性表"><a href="#线性表" class="headerlink" title="线性表"></a>线性表</h4><ul>
+<li>线性表<blockquote>
+<p>（Linear List）。线性表就是数据排成像一条线一样的结构。每个线性表上的数据最多只有前和后两个方向。其实除了数组，链表、队列、栈等也是线性表结构。</p>
+</blockquote>
+</li>
+</ul>
+<p><img src="http://note.youdao.com/yws/public/resource/cdb8c8b53a0b3aa555507a092669d98c/155377FF4F4242B1A2E2BF4763AF1175?ynotemdtimestamp=1550209373965" alt="image"></p>
+<ul>
+<li>非线性表<blockquote>
+<p>，比如二叉树、堆、图等。之所以叫非线性，是因为，在非线性表中，数据之间并不是简单的前后关系。</p>
+</blockquote>
+</li>
+</ul>
+<p><img src="http://note.youdao.com/yws/public/resource/cdb8c8b53a0b3aa555507a092669d98c/0FCCA20F7D4A42A983D6A7ACC78F0DD9?ynotemdtimestamp=1550209373965" alt="image"></p>
+<h4 id="连续的内存空间和相同类型的数据"><a href="#连续的内存空间和相同类型的数据" class="headerlink" title="连续的内存空间和相同类型的数据"></a>连续的内存空间和相同类型的数据</h4><p>正是因为这两个限制，它才有了一个堪称“杀手锏”的特性：“随机访问”。但有利就有弊，这两个限制也让数组的很多操作变得非常低效，比如要想在数组中删除、插入一个数据，为了保证连续性，就需要做大量的数据搬移工作。</p>
+<blockquote>
+<p>面试的时候，常常会问数组和链表的区别?</p>
+</blockquote>
+<p>答：链表适合插入、删除，时间复杂度O(1)；数组支持随机访问，根据下标随机访问的时间复杂度为 O(1);</p>
+<p>解释：数组是适合查找操作，但是查找的时间复杂度并不为O(1)。即便是排好序的数组，你用二分查找，时间复杂度也是O(logn)。所以，正确的表述应该是，数组支持随机访问，根据下标随机访问的时间复杂度为 O(1)。</p>
+<h3 id="二：数组的低效的插入和删除"><a href="#二：数组的低效的插入和删除" class="headerlink" title="二：数组的低效的插入和删除"></a>二：数组的低效的插入和删除</h3><ul>
+<li>插入</li>
+</ul>
+<p>如果在数组的末尾插入元素，那就不需要移动数据了，这时的时间复杂度为O(1)。但如果在数组的开头插入元素，那所有的数据都需要依次往后移动一位，所以最坏时间复杂度是 O(n)。 因为我们在每个位置插入元素的概率是一样的，所以平均情况时间复杂度为 (1+2+…n)/n=O(n)。</p>
+<p>为了更好地理解，我们举一个例子。假设数组 a[10] 中存储了如下 5 个元素：a，b，c，d，e。插入元素x</p>
+<p><img src="http://note.youdao.com/yws/public/resource/cdb8c8b53a0b3aa555507a092669d98c/D0A197171A574EC59357CF83598A1BB1?ynotemdtimestamp=1550209373965" alt="image"></p>
+<p>c –&gt; a[5]  x –&gt; a[2]  时间复杂度 O(1)</p>
+<ul>
+<li>删除</li>
+</ul>
+<p>和插入类似，如果删除数组末尾的数据，则最好情况时间复杂度为 O(1)；如果删除开头的数据，则最坏情况时间复杂度为 O(n)；平均情况时间复杂度也为 O(n)。</p>
+<p>实际上，在某些特殊场景下，我们并不一定非得追求数组中数据的连续性。如果我们将多次删除操作集中在一起执行，删除的效率是不是会提高很多呢？</p>
+<p>我们继续来看例子。数组 a[10] 中存储了 8 个元素：a，b，c，d，e，f，g，h。现在，我们要依次删除 a，b，c 三个元素。</p>
+<p><img src="http://note.youdao.com/yws/public/resource/cdb8c8b53a0b3aa555507a092669d98c/BC2FE1876888432795D7C380AD1190FD?ynotemdtimestamp=1550209373965" alt="image"></p>
+<p>为了避免 d，e，f，g，h这几个数据会被搬移三次，我们可以先记录下已经删除的数据。每次的删除操作并不是真正地搬移数据，只是记录数据已经被删除。当数组没有更多空间存储数据时，我们再触发执行一次真正的删除操作，这样就大大减少了删除操作导致的数据搬移。</p>
+<p>如果你了解 JVM，你会发现，这不就是 JVM 标记清除垃圾回收算法的核心思想吗？没错，数据结构和算法的魅力就在于此，很多时候我们并不是要去死记硬背某个数据结构或者算法，而是要学习它背后的思想和处理技巧，这些东西才是最有价值的。如果你细心留意，不管是在软件开发还是架构设计中，总能找到某些算法和数据结构的影子。</p>
+<blockquote>
+<p>JVM标记清除算法：</p>
+</blockquote>
+<p>大多数主流虚拟机采用可达性分析算法来判断对象是否存活，在标记阶段，会遍历所有 GC ROOTS，将所有 GC ROOTS 可达的对象标记为存活。只有当标记工作完成后，清理工作才会开始。</p>
+<p>不足：1.效率问题。标记和清理效率都不高，但是当知道只有少量垃圾产生时会很高效。2.空间问题。会产生不连续的内存空间碎片。</p>
+<ul>
+<li><p>警惕数组的访问越界问题</p>
+</li>
+<li><p>容器能否完全替代数组？</p>
+</li>
+</ul>
+<p>ArrayList 最大的优势就是</p>
+<ol>
+<li>可以将很多数组操作的细节封装起来。比如前面提到的数组插入、删除数据时需要搬移其他数据等。</li>
+<li>就是支持动态扩容</li>
+</ol>
+<h4 id="数组和容器"><a href="#数组和容器" class="headerlink" title="数组和容器"></a>数组和容器</h4><ol>
+<li><p>Java ArrayList 无法存储基本类型，比如 int、long，需要封装为 Integer、Long 类，而 Autoboxing、Unboxing 则有一定的性能消耗，所以如果特别关注性能，或者希望使用基本类型，就可以选用数组。</p>
+</li>
+<li><p>如果数据大小事先已知，并且对数据的操作非常简单，用不到 ArrayList 提供的大部分方法，也可以直接使用数组。</p>
+</li>
+<li><p>还有一个是我个人的喜好，当要表示多维数组时，用数组往往会更加直观。比如 Object[][] array；而用容器的话则需要这样定义：ArrayList<arraylist> array</arraylist></p>
+</li>
+<li>对于业务开发，直接使用容器就足够了，省时省力。毕竟损耗一丢丢性能，完全不会影响到系统整体的性能。但如果你是做一些非常底层的开发，比如开发网络框架，性能的优化需要做到极致，这个时候数组就会优于容器，成为首选。</li>
+</ol>
+<p>###</p>
+<p>从数组存储的内存模型上来看，“下标”最确切的定义应该是“偏移（offset）”。前面也讲到，如果用 a 来表示数组的首地址，a[0] 就是偏移为 0 的位置，也就是首地址，a[k] 就表示偏移 k 个 type_size 的位置，所以计算 a[k] 的内存地址只需要用这个公式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[k]_address = base_address + k * type_size</span><br></pre></td></tr></table></figure>
+<p>但是，如果数组从 1 开始计数，那我们计算数组元素 a[k] 的内存地址就会变为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[k]_address = base_address + (k-1)*type_size</span><br></pre></td></tr></table></figure>
+<p>对比两个公式，我们不难发现，从 1 开始编号，每次随机访问数组元素都多了一次减法运算，对于 CPU 来说，就是多了一次减法指令。</p>
+<ul>
+<li><p>数组作为非常基础的数据结构，通过下标随机访问数组元素又是其非常基础的编程操作，效率的优化就要尽可能做到极致。所以为了减少一次减法操作，数组选择了从 0 开始编号，而不是从 1 开始。</p>
+</li>
+<li><p>历史原因 C 语言设计者用 0 开始计数数组下标，之后的 Java、JavaScript 等高级语言都效仿了 C 语言，或者说，为了在一定程度上减少 C 语言程序员学习 Java 的学习成本，因此继续沿用了从 0 开始计数的习惯。实际上，很多语言中数组也并不是从 0 开始计数的，比如 Matlab。甚至还有一些语言支持负数下标，比如 Python。</p>
+</li>
+</ul>
+<blockquote>
+<p>二维数组内存寻址：</p>
+</blockquote>
+<p>对于 m * n 的数组，a [ i ][ j ] (i &lt; m,j &lt; n)的地址为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">address = base_address + ( i * n + j) * type_size</span><br></pre></td></tr></table></figure>
+<h2 id="来源"><a href="#来源" class="headerlink" title="来源"></a>来源</h2><p>本文是从 王争 数据结构与算法的学习-<a href="https://time.geekbang.org/column/article/40961" target="_blank" rel="noopener">05 | 数组：为什么很多编程语言中数组都从0开始编号？
+</a>。跟着大神学习，逐渐进步</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.codingtk.com/2019/02/14/一：复杂度分析（2）-浅析最好、最坏、平均、均摊时间复杂度/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -400,7 +622,7 @@
 <li>代码在绝大多数情况下是低级别复杂度，只有极少数情况是高级别复杂度；</li>
 <li>低级别和高级别复杂度出现具有时序规律。均摊结果一般都等于低级别复杂度。</li>
 </ol>
-<p>本文是从 王争 数据结构与算法的学习-<a href="https://time.geekbang.org/column/article/40447" target="_blank" rel="noopener">04 | 复杂度分析（下）：浅析最好、最坏、平均、均摊时间复杂度</a>。跟着大神学习，逐渐进步</p>
+<h2 id="来源"><a href="#来源" class="headerlink" title="来源"></a>来源</h2><p>本文是从 王争 数据结构与算法的学习-<a href="https://time.geekbang.org/column/article/40447" target="_blank" rel="noopener">04 | 复杂度分析（下）：浅析最好、最坏、平均、均摊时间复杂度</a>。跟着大神学习，逐渐进步</p>
 
           
         
@@ -1646,152 +1868,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.codingtk.com/2018/11/30/Hexo-Mac和Git搭建个人博客以及博客如何绑定自己的域名/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="maoai_xianyu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/maoai_xianyu.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="maoai_xianyu'Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/30/Hexo-Mac和Git搭建个人博客以及博客如何绑定自己的域名/" itemprop="url">Hexo Mac和Git搭建个人博客以及博客如何绑定自己的域名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-30T17:58:10+08:00">
-                2018-11-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hexo/" itemprop="url" rel="index">
-                    <span itemprop="name">Hexo</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="Hexo-Mac和Git搭建个人Blog以及绑定自己的域名流程"><a href="#Hexo-Mac和Git搭建个人Blog以及绑定自己的域名流程" class="headerlink" title="Hexo Mac和Git搭建个人Blog以及绑定自己的域名流程"></a>Hexo Mac和Git搭建个人Blog以及绑定自己的域名流程</h2><p>在Mac上使用Hexo搭建自己的Blog以及配置自己的域名，开始学习写Blog，记录自己的学习。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/11/30/Hexo-Mac和Git搭建个人博客以及博客如何绑定自己的域名/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1844,7 +1920,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
