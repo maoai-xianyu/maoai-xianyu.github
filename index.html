@@ -354,111 +354,17 @@
 
       
         
-          
-            <h2 id="链表（上）：如何实现LRU缓存淘汰算法"><a href="#链表（上）：如何实现LRU缓存淘汰算法" class="headerlink" title="链表（上）：如何实现LRU缓存淘汰算法?"></a>链表（上）：如何实现LRU缓存淘汰算法?</h2><blockquote>
+          <h2 id="链表（上）：如何实现LRU缓存淘汰算法"><a href="#链表（上）：如何实现LRU缓存淘汰算法" class="headerlink" title="链表（上）：如何实现LRU缓存淘汰算法?"></a>链表（上）：如何实现LRU缓存淘汰算法?</h2><blockquote>
 <p>链表（Linked list）这个数据结构。<br>学习链表有什么用呢？为了回答这个问题，我们先来讨论一个经典的链表应用场景，那就是 LRU 缓存淘汰算法。</p>
 </blockquote>
 <p>缓存是一种提高数据读取性能的技术，在硬件设计、软件开发中都有着非常广泛的应用，比如常见的CPU缓存、数据库缓存、浏览器缓存等等。</p>
-<p>缓存的大小有限，当缓存被用满时，哪些数据应该被清理出去，哪些数据应该被保留？这就需要缓存淘汰策略来决定。常见的策略有三种：</p>
-<ol>
-<li>先进先出策略 FIFO（First In，First Out）</li>
-<li>最少使用策略 LFU（Least Frequently Used）</li>
-<li>最近最少使用策略 LRU（Least Recently Used）。</li>
-</ol>
-<h3 id="数组和链表"><a href="#数组和链表" class="headerlink" title="数组和链表"></a>数组和链表</h3><p><img src="http://note.youdao.com/yws/public/resource/390d56610178ca28bdb8cb55dee76568/6CABA576D2514E8787A1AA9CB9BAEB0F?ynotemdtimestamp=1550567249217" alt="image"></p>
-<p><img src="http://note.youdao.com/yws/public/resource/390d56610178ca28bdb8cb55dee76568/91BE0304AF4340FC887732EFA229207F?ynotemdtimestamp=1550567249217" alt="image"></p>
-<ol>
-<li>数组</li>
-</ol>
-<p>数组需要一块连续的内存空间来存储，对内存的要求比较高。<br>eg: 如果我们申请一个100MB大小的数组，当内存中没有连续的、足够大的存储空间时，即便内存的剩余总可用空间大于 100MB，仍然会申请失败。</p>
-<ol start="2">
-<li>链表</li>
-</ol>
-<p>链表并不需要一块连续的内存空间，它通过“指针”将一组零散的内存块串联起来使用。<br>eg: 所以如果我们申请的是100MB大小的链表，根本不会有问题。</p>
-<h3 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h3><ul>
-<li>单链表</li>
-</ul>
-<p>链表通过指针将一组零散的内存块串联在一起。其中，我们把内存块称为链表的“ <strong>结点</strong> ”。为了将所有的结点串起来，每个链表的结点除了存储数据之外，还需要记录链上的下一个结点的地址。如图所示，我们把这个记录下个结点地址的指针叫作<strong>后继指针 </strong>next<em>**</em></p>
-<p><img src="http://note.youdao.com/yws/public/resource/390d56610178ca28bdb8cb55dee76568/0F72288BD43646E69152BEED4DFE7327?ynotemdtimestamp=1550567249217" alt="image"></p>
-<ol>
-<li>第一节点叫<strong>头结点</strong>，用来记录链表的基地址，因此可以遍历得到整条链表</li>
-<li>最后一个节点叫<strong>尾节点</strong>，特殊的地方是：指针不是指向下一个结点，而是指向一个空地址NULL，表示这是链表上最后一个结点。</li>
-</ol>
-<blockquote>
-<p>数组的插入和删除的时间复杂度是O(n)，单链表的是O(1)</p>
-</blockquote>
-<p><img src="http://note.youdao.com/yws/public/resource/390d56610178ca28bdb8cb55dee76568/09E79343955448AD944C5BB533403469?ynotemdtimestamp=1550567249217" alt="image"></p>
-<blockquote>
-<p>链表要是访问第k个元素，没有数组高效，因为链表的数据并非连续存储的,需要根据指针一个结点一个结点地依次遍历直到找到相应的结点，时间复杂度是O(n)</p>
-</blockquote>
-<ul>
-<li>循环链表 是一种特殊的单链表</li>
-</ul>
-<p>循环链表的尾结点指针是指向链表的头结点。</p>
-<p><img src="http://note.youdao.com/yws/public/resource/390d56610178ca28bdb8cb55dee76568/A45CC5D97B164FB087BE29166CCCDC76?ynotemdtimestamp=1550567249217" alt="image"></p>
-<blockquote>
-<p>用法 循环链的优点是从链尾到链头比较方便。当要处理的数据具有环型结构特点时，就特别适合采用循环链表。比如著名的<a href="https://baike.baidu.com/item/%E7%BA%A6%E7%91%9F%E5%A4%AB%E9%97%AE%E9%A2%98/3857719?fr=aladdin" target="_blank" rel="noopener">约瑟夫问题</a></p>
-</blockquote>
-<ul>
-<li>双向链表 每个结点有一个后继指针 next 指向后面的结点，还有一个前驱指针 prev 指向前面的结点</li>
-</ul>
-<p><img src="http://note.youdao.com/yws/public/resource/390d56610178ca28bdb8cb55dee76568/28B7AFFCF6D14117AD6927AA17E3706A?ynotemdtimestamp=1550567249217" alt="image"></p>
-<p>双向链表需要额外的两个空间来存储后继结点和前驱结点的地址。所以，如果存储同样多的数据，双向链表要比单链表占用更多的内存空间。</p>
-<blockquote>
-<p>特点</p>
-</blockquote>
-<ol>
-<li>两个指针比较浪费存储空间；</li>
-<li>支持双向遍历，这样也带来了双向链表操作的灵活性。</li>
-</ol>
-<hr>
-<blockquote>
-<p>那相比单链表，双向链表适合解决哪种问题呢？</p>
-</blockquote>
-<p>从结构上来看，双向链表可以支持O(1)时间复杂度的情况下找到前驱结点，正是这样的特点，也使双向链表在某些情况下的插入、删除等操作都要比单链表简单、高效。</p>
-<ul>
-<li>删除</li>
-</ul>
-<p>在实际的软件开发中，从链表中删除一个数据无外乎这两种情况：</p>
-<ol>
-<li>删除结点中“值等于某个给定值”的结点； 删除的时间复杂度O(1)，遍历的是时间复杂度O(n), 加法法则 -&gt; 时间复杂度O(n)</li>
-<li>删除给定指针指向的结点。 单链表是 时间复杂度O(n)； 双链表是 时间复杂度O(1)，因为双链表已经保存了前驱结点的指针</li>
-<li>有序链表，双向链表的安值查询的效率比单链表高</li>
-<li>Java 中 LinkedHashMap 就是 双向链表数据结构</li>
-</ol>
-<blockquote>
-<p>用空间换时间的设计思想</p>
-</blockquote>
-<ol>
-<li>当内存空间充足的时候，如果我们更加追求代码的执行速度，可以选择空间复杂度相对较高、但时间复杂度相对很低的算法或者数据结构。-&gt;执行较慢的程序，可以通过消耗更多的内存（空间换时间）来进行优化。</li>
-<li>如果内存比较紧缺，比如代码跑在手机或者单片机上，这个时候，就要反过来用时间换空间的设计思路。-&gt; 消耗过多内存的程序，可以通过消耗过多的时间（时间换空间）来降低内存的消耗进行优化。</li>
-</ol>
-<hr>
-<ul>
-<li>双向循环链表</li>
-</ul>
-<p><img src="http://note.youdao.com/yws/public/resource/390d56610178ca28bdb8cb55dee76568/E47EC58DE2B74FB7B039AF869D96F9C9?ynotemdtimestamp=1550567249217" alt="image"></p>
-<hr>
-<blockquote>
-<p>如何实现LRU缓存淘汰算法?</p>
-</blockquote>
-<p>思路：我们维护一个有序单链表，越靠近链表尾部的结点是越早之前访问的。当有一个新的数据被访问时，我们从链表头开始顺序遍历链表。</p>
-<ol>
-<li>如果此数据之前已经被缓存在链表中了，我们遍历得到这个数据对应的结点，并将其从原来的位置删除，然后再插入到链表的头部。</li>
-<li>如果此数据没有在缓存链表中，又可以分为两种情况：<ol>
-<li>如果此时缓存未满，则将此结点直接插入到链表的头部；</li>
-<li>如果此时缓存已满，则链表尾结点删除，将新的数据结点插入链表的头部。</li>
-</ol>
-</li>
-</ol>
-<p>现在我们来看下m缓存访问的时间复杂度是多少。因为不管缓存有没有满，我们都需要遍历一遍链表，所以这种基于链表的实现思路，缓存访问的时间复杂度为 O(n)。</p>
-<p>另一种方案：</p>
-<p>可以继续优化这个实现思路，比如引入<strong>散列表</strong>（Hash table）来记录每个数据的位置，将缓存访问的时间复杂度降到 O(1)。</p>
-<hr>
-<h3 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h3><p>如何判断一个字符串是否是回文字符串的问题？</p>
-<h2 id="来源"><a href="#来源" class="headerlink" title="来源"></a>来源</h2><p>本文是从 王争 数据结构与算法的学习-<a href="https://time.geekbang.org/column/article/41013" target="_blank" rel="noopener">06 | 链表（上）：如何实现LRU缓存淘汰算法?</a>。跟着大神学习，逐渐进步</p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/02/19/三：链表（上）-如何实现LRU缓存淘汰算法/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
